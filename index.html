@@ -6,7 +6,35 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pyscript@0.3.0/dist/pyscript.css">
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css">
+<body>
+    <h1>Welcome to the Dungeon Crawler Game</h1>
+    <div id="game_output">
+        <py-script>
+            # Your Python game logic here
+            class Room:
+                def __init__(self, name, description):
+                    self.name = name
+                    self.description = description
+                    self.connections = {}
+
+                def connect_room(self, room, direction):
+                    self.connections[direction] = room
+
+            room_spawn = Room("Spawn", "Starting point")
+            room_2 = Room("Hall of Echoes", "A hall where every sound is amplified.")
+            room_spawn.connect_room(room_2, "right")
+
+            print(f"Player starts in: {room_spawn.name}")
+            print(f"First room connected: {room_spawn.connections['right'].name}")
+
+            # Game logic continues here...
+        </py-script>
+    </div>
+
+    <script src="https://pyscript.net/alpha/pyscript.js"></script>
+</body>
+
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLRS3G9ZB4"></script>
@@ -818,7 +846,7 @@
         </py-script>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/pyscript.js"></script>
+    <script src="https://pyscript.net/alpha/pyscript.js"></script>
 </body>
     <footer>
         <nav>
