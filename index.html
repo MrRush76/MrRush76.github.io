@@ -6,6 +6,8 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mediaqueries.css">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css">
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLRS3G9ZB4"></script>
@@ -263,6 +265,17 @@
             </div>
         </div>
     </section>
+    <py-script>
+        # Example Python code to interact with your GitHub repository
+        import requests
+
+        url = 'https://api.github.com/repos/MrRush76/dungeon-crawler-oop/contents'
+        response = requests.get(url)
+        repo_contents = response.json()
+
+        for item in repo_contents:
+            print(f"File: {item['name']} - Type: {item['type']}")
+    </py-script>
     <footer>
         <nav>
             <div class="nav-links-container">
