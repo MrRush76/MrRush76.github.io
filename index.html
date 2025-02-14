@@ -266,19 +266,22 @@
         </div>
     </section>
     <py-script>
+        from pyodide.http import pyfetch
         import js
-        import requests
-
-        url = 'https://api.github.com/repos/MrRush76/dungeon-crawler-oop/contents'
-        response = requests.get(url)
-        repo_contents = response.json()
-
-        output = ""
-        for item in repo_contents:
-            output += f"File: {item['name']} - Type: {item['type']}<br>"
-
-        # Display the output in the HTML body
-        js.document.body.innerHTML += output
+    
+        async def fetch_repo_contents():
+            url = 'https://api.github.com/repos/MrRush76/dungeon-crawler-oop/contents'
+            response = await pyfetch(url)
+            repo_contents = await response.json()
+    
+            output = ""
+            for item in repo_contents:
+                output += f"File: {item['name']} - Type: {item['type']}<br>"
+    
+            # Display the output in the HTML body
+            js.document.body.innerHTML += output
+    
+        fetch_repo_contents()
     </py-script>
     <footer>
         <nav>
