@@ -266,15 +266,19 @@
         </div>
     </section>
     <py-script>
-        # Example Python code to interact with your GitHub repository
+        import js
         import requests
 
         url = 'https://api.github.com/repos/MrRush76/dungeon-crawler-oop/contents'
         response = requests.get(url)
         repo_contents = response.json()
 
+        output = ""
         for item in repo_contents:
-            print(f"File: {item['name']} - Type: {item['type']}")
+            output += f"File: {item['name']} - Type: {item['type']}<br>"
+
+        # Display the output in the HTML body
+        js.document.body.innerHTML += output
     </py-script>
     <footer>
         <nav>
